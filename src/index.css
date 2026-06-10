@@ -535,3 +535,10 @@ main {
   font-weight: 500;
   color: var(--text-muted);
 }
+
+.nav-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%; /* optional */
+}
