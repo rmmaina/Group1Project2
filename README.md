@@ -1,205 +1,56 @@
-<<<<<<< HEAD
-# BookHub - Online Book Ordering Platform
+# 📚 OpenLibrary Hub
 
-## Project Overview
+OpenLibrary Hub is a fast, responsive Single Page Application (SPA) designed for book discovery, tracking, and personal catalog management. Built as a software engineering capstone project, the application connects directly to the Open Library REST API, allowing users to search millions of titles, curate custom bookshelves, maintain a favorites vault, and log persistent, multi-comment reading journals.
 
-BookHub is a web application that enables users to browse and search for books, add books to a shopping cart, and submit orders for shipping.
-
-This project is being developed as part of a Software Engineering Bootcamp and follows an Agile team-based development approach using GitHub for collaboration and version control.
+![App Screenshot](https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1200&q=80)
 
 ---
 
-## Phase 1 Features
+## 🚀 Key Features
 
-### Homepage
-
-The homepage serves as the landing page for users and provides:
-
-* Application introduction
-* Featured books section
-* Navigation menu
-* Search bar
-* Call-to-action buttons
-
-### Book Search
-
-Users can search for books using:
-
-* Book title
-* Author name
-* Genre (future enhancement)
-
-### Product Catalogue
-
-Displays available books as product cards showing:
-
-* Book cover image
-* Title
-* Author
-* Price
-* Availability status
-* View details button
-
-### Shopping Cart
-
-Users can:
-
-* Add books to cart
-* View selected items
-* Update quantities
-* Remove items from cart
-
-### Submit Order
-
-Users can:
-
-* Review cart contents
-* Enter shipping information
-* Submit an order
-* Receive order confirmation
+* **Real-Time Global Search:** Asynchronously fetch records from the Open Library API. Features an integrated **600ms input debounce mechanism** to minimize network thrashing and optimize search performance.
+* **Personal Tracker Bookshelf:** Save books to a personal tracking space and update their reading status dynamically (`In Progress` vs. `Read`).
+* **Curated Favorites Vault:** Instantly toggle book markers into a filtered favorites interface with immediate state updating across views.
+* **Ranked Reviews Dashboard:** Books with assigned star ratings are automatically aggregated and displayed on a dedicated board, sorted in descending order from highest to lowest score.
+* **Multi-Comment Note Logs:** Append multiple notes, memorable quotes, or reflections to any rated book. Every note is stamped with a human-readable local timestamp and a unique cryptographic ID.
+* **Asynchronous Micro-Interactions:** Replaced disruptive native browser alerts with custom, non-blocking **SweetAlert2 toast notifications** for all user actions.
+* **Persistent Storage:** Full state data layer is safely written to and synchronized with the browser's `localStorage` engine.
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack & Tooling
 
-### Frontend
-
-* React
-* JavaScript
-
-### Backend
-
-* Python
-* Flask
-
-### Database
-
-* PostgreSQL
-
-### Version Control
-
-* Git
-* GitHub
-
-### Deployment
-
-* To be determined in later phases
+* **Frontend Library:** React 19 (Functional Components & Hooks)
+* **Build Architecture:** [Vite](https://vite.dev/) (Rapid Hot Module Replacement dev server)
+* **Styling Engine:** [Tailwind CSS v4](https://tailwindcss.com/) (Utilizing the specialized compiler `@tailwindcss/vite` plugin for zero-runtime CSS parsing)
+* **Iconography:** [Lucide React](https://lucide.dev/) (Vector icons asset maps)
+* **Alert Modals:** [SweetAlert2](https://sweetalert2.github.io/) (Asynchronous modal UI)
 
 ---
 
-## Team Collaboration Workflow
-
-### Branching Strategy
-
-Main branches:
-
-* main → Production-ready code
-* develop → Integration branch
-
-Feature branches:
-
-* feature/homepage
-* feature/search
-* feature/product-cards
-* feature/cart
-* feature/submit-order
-
-### Development Process
-
-1. Pull latest changes from develop.
-2. Create a feature branch.
-3. Implement the assigned feature.
-4. Commit changes.
-5. Push branch to GitHub.
-6. Create a Pull Request.
-7. Team review.
-8. Merge into develop.
-9. Merge develop into main after successful testing.
-
----
-
-## User Stories
-
-### As a user
-
-* I want to view available books.
-* I want to search for books.
-* I want to add books to my cart.
-* I want to remove books from my cart.
-* I want to submit an order for shipping.
-
-### As an administrator (Future Scope)
-
-* I want to manage book inventory.
-* I want to view customer orders.
-* I want to update book listings.
-
----
-
-## Project Structure
+## 📁 Project Architecture
 
 ```text
-bookhub/
-
-├── backend/
-│   ├── app.py
-│   ├── models.py
-│   ├── routes/
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── src/
-│   │   ├── pages/
-│   │   ├── components/
-│   │   ├── services/
-│   │   └── assets/
-│   │
-│   └── package.json
-│
-├── docs/
-│
-├── README.md
-│
-└── .gitignore
-```
-
----
-
-## Future Enhancements
-
-* User Authentication
-* Wishlist Functionality
-* Order Tracking
-* Online Payments
-* Book Reviews and Ratings
-* Admin Dashboard
-
----
-
-## Contributors
-
-Moringa Software Engineering Bootcamp Team - Joseph Ndemo, Rotich Ian, Mark Warunge, Robert Maina and Gregory Kipchumba
-
----
-
-## License
-
-This project is for educational purposes only.
-=======
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
->>>>>>> 162200c (Home page styling and read API)
+my-library-app/
+├── public/
+├── src/
+│   ├── assets/
+│   │   └── icon1.png           # Custom application branding identity asset
+│   ├── components/
+│   │   ├── Navbar.jsx          # Multi-tab view routing navigator
+│   │   └── Footer.jsx          # Clean application context footer
+│   ├── features/
+│   │   └── books/
+│   │       ├── BookCard.jsx    # Monolithic reusable UI card matrix component
+│   │       ├── BookGrid.jsx    # Structural catalog renderer
+│   │       ├── BookModal.jsx   # Detailed lightbox information view overlay
+│   │       ├── Bookshelf.jsx   # Target reading status workflow dashboard
+│   │       ├── Favorites.jsx   # Curated user likes collection page
+│   │       ├── Reviews.jsx     # High-to-low ranked note logging matrix
+│   │       └── bookService.js  # Async network layer connecting Open Library API
+│   ├── App.jsx                 # Single-source-of-truth state hub & main controller
+│   ├── index.css               # Base Tailwind compilation injection layer
+│   └── main.jsx                # Application DOM mounting mount entry point
+├── vite.config.js              # Custom Tailwind v4 bundle pipeline settings
+├── package.json                # Project dependencies and operational scripts
+└── README.md                   # System configuration & overview file
