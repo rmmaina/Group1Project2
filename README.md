@@ -266,7 +266,7 @@ Through this project, I gained practical experience in:
 
 1.Joseph Ndemo
 2.Mark Warunge
-3.
+3. Gregory Kipchumba
 4.
 5.
 
