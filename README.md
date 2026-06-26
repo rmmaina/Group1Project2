@@ -1,288 +1,138 @@
-# OpenLibrary Hub
+📚 Book Review System – Full Stack Web Application
+📌 Project Overview
 
-A modern, responsive Single Page Application (SPA) for discovering, organizing, and tracking books using the Open Library API.
+This project is a full-stack web application built using Flask (backend), React (frontend), and PostgreSQL (database).
 
-OpenLibrary Hub enables readers to search millions of books, manage personalized reading lists, save favorites, rate books, and maintain reading notes—all within a streamlined and intuitive user experience.
+It allows users to manage books and their reviews using a RESTful API with full CRUD functionality.
 
----
+🎯 Project Objective
 
-## Overview
+The goal of this project is to design and implement a full-stack system where users can:
 
-OpenLibrary Hub was developed as a Software Engineering Capstone Project with a focus on:
+Add books to a collection
+View all available books
+Add reviews and ratings for books
+Update and delete books and reviews
 
-* Frontend performance optimization
-* Modern React architecture
-* Responsive user experience
-* State management best practices
-* API integration and asynchronous programming
+This demonstrates understanding of backend API development, database relationships, and frontend integration.
 
-The application integrates with the Open Library REST API to provide access to one of the world's largest collections of bibliographic records.
+💡 Problem Statement
 
----
-## Deployed Application link
+People often read multiple books but do not have a simple way to track their thoughts and reviews in one place.
 
-https://openlibrary-one.vercel.app/
+This system provides a structured way to store books and user reviews in a database and manage them easily.
 
-## Application Preview
+🛠️ Technologies Used
+Backend
+Python
+Flask
+Flask SQLAlchemy
+Flask Migrate
+Flask CORS
+PostgreSQL
+Frontend
+React (Vite / Create React App)
+Axios / Fetch API
+🗂️ Project Structure
+server/
+│
+├── app.py
+├── config.py
+├── seed.py
+│
+├── models/
+│   ├── __init__.py
+│   ├── book.py
+│   └── review.py
+│
+├── routes/
+│   ├── book_routes.py
+│   └── review_routes.py
+🔗 API Endpoints
+📘 Books
+Method	Endpoint	Description
+GET	/books	Get all books
+GET	/books/<id>	Get a single book
+POST	/books	Create a new book
+PATCH	/books/<id>	Update a book
+DELETE	/books/<id>	Delete a book
+⭐ Reviews
+Method	Endpoint	Description
+GET	/reviews	Get all reviews
+GET	/reviews/<id>	Get a single review
+POST	/reviews	Create a review
+PATCH	/reviews/<id>	Update a review
+DELETE	/reviews/<id>	Delete a review
+🧪 Sample API Requests
+➕ Create a Book
+{
+  "title": "Clean Code",
+  "author": "Robert C. Martin",
+  "genre": "Programming",
+  "description": "A book about writing clean and maintainable code."
+}
+⭐ Create a Review
+{
+  "rating": 5,
+  "comment": "Very helpful and easy to understand.",
+  "book_id": 1
+}
+🗄️ Database Setup
+1. Create Database
+CREATE DATABASE library_db;
+2. Configure Database Connection
 
-> Add screenshots of your application here.
+Update config.py:
 
-### Home Page
+postgresql://postgres:your_password@localhost/library_db
+3. Run Migrations
+flask db init
+flask db migrate
+flask db upgrade
+🌱 Seeding the Database
 
-![Home Page](./src/assets/home-page.png)
+To populate the database with sample data:
 
-### Bookshelf Tracker
+python seed.py
 
-![Bookshelf](./src/assets/bookshelf.png)
+This will insert:
 
-### Favorites
+Sample books
+Sample reviews linked to books
+▶️ How to Run the Project
+1. Start Backend Server
+python app.py
 
-![Favorites](./src/assets/favorites.png)
+Backend runs at:
 
-### Reviews & Notes
-
-![Reviews](./src/assets/reviews.png)
-
----
-
-## Features
-
-### Real-Time Book Search
-
-* Search books by title, author, or keyword
-* Integrated Open Library API
-* Debounced search requests (600ms delay)
-* Loading and error state handling
-
-### Personal Bookshelf Tracker
-
-* Save books to a personal reading collection
-* Track reading progress
-* Update status:
-
-  * Want to Read
-  * In Progress
-  * Completed
-
-### Favorites Management
-
-* Add or remove favorite books
-* Dedicated favorites view
-* Instant state synchronization
-
-### Ratings & Reviews
-
-* Rate books using a star-rating system
-* Automatically organize rated books
-* Sort reviews by highest rating
-
-### Reading Notes
-
-* Add personal reflections and notes
-* Timestamped entries
-* Unique identifiers generated using `crypto.randomUUID()`
-
-### Modern Notifications
-
-* SweetAlert2 toast notifications
-* Non-blocking user feedback
-* Improved user experience
-
-### Persistent Storage
-
-* Browser localStorage integration
-* Automatic data persistence
-* State recovery on page refresh
-
----
-
-## Technology Stack
-
-| Category      | Technology            |
-| ------------- | --------------------- |
-| Frontend      | React 19              |
-| Build Tool    | Vite                  |
-| Styling       | Tailwind CSS v4       |
-| Icons         | Lucide React          |
-| Notifications | SweetAlert2           |
-| API           | Open Library REST API |
-| Storage       | Browser localStorage  |
-
----
-
-## Project Structure
-
-```text
-my-library-app/
-├── public/
-├── src/
-│   ├── assets/
-│   │   └── icon1.png
-│   ├── components/
-│   │   ├── Navbar.jsx
-│   │   └── Footer.jsx
-│   ├── features/
-│   │   └── books/
-│   │       ├── BookCard.jsx
-│   │       ├── BookGrid.jsx
-│   │       ├── BookModal.jsx
-│   │       ├── Bookshelf.jsx
-│   │       ├── Favorites.jsx
-│   │       ├── Reviews.jsx
-│   │       └── bookService.js
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-├── vite.config.js
-├── package.json
-└── README.md
-```
-
-## Getting Started
-
-### Prerequisites
-
-Before running the project, ensure you have:
-
-* Node.js (v18 or later)
-* npm (included with Node.js)
-
----
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/rmmaina/capstone_library.git
-
-cd capstone_library/my-library-app
-```
-
-### 2. Install Dependencies
-
-```bash
+http://localhost:5000
+2. Start Frontend (React)
 npm install
-```
-
-### 3. Start Development Server
-
-```bash
 npm run dev
-```
+🔥 Key Features
+Full CRUD operations for Books
+Full CRUD operations for Reviews
+One-to-many relationship (Book → Reviews)
+RESTful API design
+PostgreSQL database integration
+React frontend ready for integration
+📚 Learning Outcomes
 
-### 4. Open in Browser
+This project demonstrates:
 
-Visit:
+Building REST APIs using Flask
+Working with relational databases (PostgreSQL)
+Creating and managing database relationships
+Structuring a full-stack application
+Connecting frontend and backend systems
 
-```text
-http://localhost:5173
-```
+🚀 Future Improvements
+User authentication (login/register system)
+Average rating per book
+Search and filtering functionality
+Improved React UI design
+Deployment on cloud platforms
 
----
+👨‍💻 Developers
 
-## Core Engineering Concepts
-
-### Search Debouncing
-
-To reduce unnecessary API calls, search requests are delayed until the user stops typing.
-
-```javascript
-useEffect(() => {
-  const timer = setTimeout(() => {
-    setDebouncedTerm(searchTerm);
-    setPage(1);
-  }, 600);
-
-  return () => clearTimeout(timer);
-}, [searchTerm]);
-```
-
-### Local Storage Persistence
-
-Application state is automatically synchronized with browser storage.
-
-```javascript
-useEffect(() => {
-  localStorage.setItem(
-    "bookshelf",
-    JSON.stringify(bookshelf)
-  );
-}, [bookshelf]);
-```
-
-### Tailwind CSS v4 + Vite Integration
-
-```javascript
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
-
-export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
-});
-```
-
----
-
-## Key Learning Outcomes
-
-Through this project, I gained practical experience in:
-
-* React component architecture
-* State management using Hooks
-* REST API integration
-* Asynchronous JavaScript
-* Performance optimization
-* Tailwind CSS v4 workflow
-* User-centered design principles
-* Modern build tooling with Vite
-
----
-
-## Future Roadmap
-
-### Phase 2
-
-* Flask or Node.js backend integration
-* PostgreSQL database
-* RESTful API services
-
-### Phase 3
-
-* JWT authentication
-* User accounts and profiles
-* Cloud deployment
-
-### Future Enhancements
-
-* Reading analytics dashboard
-* Monthly reading statistics
-* Personalized recommendations
-* Community discussions
-* Social sharing features
-
----
-
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Developer
-
-1.Robert Maina
-2.Joseph Ndemo
-3.Mark Warunge
-4.Abdirahman Abdi Salah
-5.Gregory Kipchumba
-6.Rotich Ian
+1.Robert Maina 2.Joseph Ndemo 3.Mark Warunge 4.Abdirahman Abdi Salah 5.Gregory Kipchumba 6.Rotich Ian
