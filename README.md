@@ -33,7 +33,7 @@ Backend:
 
 Frontend:
 - React (Vite / CRA)
-- Axios
+- Axios / Fetch API
 
 Project Structure
 -----------------
@@ -90,7 +90,7 @@ Review:
 Relationship:
 - One Book → Many Reviews
 
-Step 7: Run database migrations
+Step 7: Run migrations
 - flask db init
 - flask db migrate
 - flask db upgrade
@@ -101,17 +101,54 @@ Step 8: Seed database
 Step 9: Run backend server
 - python app.py
 
-Backend will run at:
+Backend runs at:
 - http://localhost:5000
 
-How to Update Backend (After Changes)
---------------------------------------
+Frontend Setup Steps
+--------------------
 
-If you make changes to models or routes:
+Step 1: Create React app
+- npm create vite@latest frontend
+
+Step 2: Move into frontend folder
+- cd frontend
+
+Step 3: Install dependencies
+- npm install
+
+Step 4: Install Axios
+- npm install axios
+
+Step 5: Start frontend server
+- npm run dev
+
+Frontend runs at:
+- http://localhost:5173
+
+Frontend Integration Steps
+-------------------------
+
+Step 1: Create API service file
+- src/services/api.js
+
+Step 2: Add backend URL
+- http://localhost:5000
+
+Step 3: Create components
+- BookList
+- BookForm
+- ReviewList
+
+Step 4: Connect frontend to backend using Axios
+
+How to Update Backend
+----------------------
+
+If changes are made:
 
 Step 1: Stop server (CTRL + C)
 
-Step 2: Run migrations again
+Step 2: Run migrations
 - flask db migrate -m "update changes"
 - flask db upgrade
 
@@ -135,21 +172,6 @@ Reviews:
 - PATCH /reviews/<id>
 - DELETE /reviews/<id>
 
-Frontend Setup Steps
---------------------
-
-Step 1:
-- npm create vite@latest frontend
-
-Step 2:
-- npm install
-
-Step 3:
-- npm install axios
-
-Step 4:
-- npm run dev
-
 Features
 --------
 - Full CRUD for books
@@ -171,5 +193,5 @@ Developers
 Copyright
 ---------
 This project is developed for educational purposes only.
-It is intended for learning and academic submission use.
+It is intended for academic learning and submission.
 No commercial use is permitted.
