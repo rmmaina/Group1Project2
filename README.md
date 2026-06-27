@@ -1,138 +1,175 @@
-📚 Book Review System – Full Stack Web Application
-📌 Project Overview
+Open library book System – Full Stack Web Application
 
-This project is a full-stack web application built using Flask (backend), React (frontend), and PostgreSQL (database).
+Project Overview
+----------------
+This is a full-stack web application built using Flask, React, and PostgreSQL.
+It allows users to manage books and reviews.
+It provides full CRUD functionality using a REST API.
 
-It allows users to manage books and their reviews using a RESTful API with full CRUD functionality.
+Project Objective
+-----------------
+- Add books to a collection
+- View all books
+- Add reviews and ratings for books
+- Update books and reviews
+- Delete books and reviews
 
-🎯 Project Objective
+Problem Statement
+-----------------
+People read books but lack a simple way to store reviews.
+This system provides a structured way to manage books and reviews.
+Data is stored in PostgreSQL and accessed via API.
 
-The goal of this project is to design and implement a full-stack system where users can:
+Technologies Used
+-----------------
 
-Add books to a collection
-View all available books
-Add reviews and ratings for books
-Update and delete books and reviews
+Backend:
+- Python
+- Flask
+- Flask SQLAlchemy
+- Flask Migrate
+- Flask CORS
+- PostgreSQL
 
-This demonstrates understanding of backend API development, database relationships, and frontend integration.
+Frontend:
+- React (Vite / CRA)
+- Axios
 
-💡 Problem Statement
-
-People often read multiple books but do not have a simple way to track their thoughts and reviews in one place.
-
-This system provides a structured way to store books and user reviews in a database and manage them easily.
-
-🛠️ Technologies Used
-Backend
-Python
-Flask
-Flask SQLAlchemy
-Flask Migrate
-Flask CORS
-PostgreSQL
-Frontend
-React (Vite / Create React App)
-Axios / Fetch API
-🗂️ Project Structure
+Project Structure
+-----------------
 server/
-│
-├── app.py
-├── config.py
-├── seed.py
-│
-├── models/
-│   ├── __init__.py
-│   ├── book.py
-│   └── review.py
-│
-├── routes/
-│   ├── book_routes.py
-│   └── review_routes.py
-🔗 API Endpoints
-📘 Books
-Method	Endpoint	Description
-GET	/books	Get all books
-GET	/books/<id>	Get a single book
-POST	/books	Create a new book
-PATCH	/books/<id>	Update a book
-DELETE	/books/<id>	Delete a book
-⭐ Reviews
-Method	Endpoint	Description
-GET	/reviews	Get all reviews
-GET	/reviews/<id>	Get a single review
-POST	/reviews	Create a review
-PATCH	/reviews/<id>	Update a review
-DELETE	/reviews/<id>	Delete a review
-🧪 Sample API Requests
-➕ Create a Book
-{
-  "title": "Clean Code",
-  "author": "Robert C. Martin",
-  "genre": "Programming",
-  "description": "A book about writing clean and maintainable code."
-}
-⭐ Create a Review
-{
-  "rating": 5,
-  "comment": "Very helpful and easy to understand.",
-  "book_id": 1
-}
-🗄️ Database Setup
-1. Create Database
-CREATE DATABASE library_db;
-2. Configure Database Connection
+    app.py
+    config.py
+    seed.py
 
-Update config.py:
+models/
+    book.py
+    review.py
 
-postgresql://postgres:your_password@localhost/library_db
-3. Run Migrations
-flask db init
-flask db migrate
-flask db upgrade
-🌱 Seeding the Database
+routes/
+    book_routes.py
+    review_routes.py
 
-To populate the database with sample data:
+Backend Setup Steps
+-------------------
 
-python seed.py
+Step 1: Create project folder
+- mkdir server
+- cd server
 
-This will insert:
+Step 2: Create virtual environment
+- python -m venv venv
+- venv\Scripts\activate
 
-Sample books
-Sample reviews linked to books
-▶️ How to Run the Project
-1. Start Backend Server
-python app.py
+Step 3: Install dependencies
+- pip install flask flask-sqlalchemy flask-migrate flask-cors psycopg2
 
-Backend runs at:
+Step 4: Create files
+- app.py
+- config.py
+- seed.py
 
-http://localhost:5000
-2. Start Frontend (React)
-npm install
-npm run dev
-🔥 Key Features
-Full CRUD operations for Books
-Full CRUD operations for Reviews
-One-to-many relationship (Book → Reviews)
-RESTful API design
-PostgreSQL database integration
-React frontend ready for integration
-📚 Learning Outcomes
+Step 5: Configure database
+- Set PostgreSQL URI in config.py
 
-This project demonstrates:
+Step 6: Create models
 
-Building REST APIs using Flask
-Working with relational databases (PostgreSQL)
-Creating and managing database relationships
-Structuring a full-stack application
-Connecting frontend and backend systems
+Book:
+- id
+- title
+- author
+- genre
+- description
 
-🚀 Future Improvements
-User authentication (login/register system)
-Average rating per book
-Search and filtering functionality
-Improved React UI design
-Deployment on cloud platforms
+Review:
+- id
+- rating
+- comment
+- book_id
 
-👨‍💻 Developers
+Relationship:
+- One Book → Many Reviews
 
-1.Robert Maina 2.Joseph Ndemo 3.Mark Warunge 4.Abdirahman Abdi Salah 5.Gregory Kipchumba 6.Rotich Ian
+Step 7: Run database migrations
+- flask db init
+- flask db migrate
+- flask db upgrade
+
+Step 8: Seed database
+- python seed.py
+
+Step 9: Run backend server
+- python app.py
+
+Backend will run at:
+- http://localhost:5000
+
+How to Update Backend (After Changes)
+--------------------------------------
+
+If you make changes to models or routes:
+
+Step 1: Stop server (CTRL + C)
+
+Step 2: Run migrations again
+- flask db migrate -m "update changes"
+- flask db upgrade
+
+Step 3: Restart server
+- python app.py
+
+API Endpoints
+--------------
+
+Books:
+- GET /books
+- GET /books/<id>
+- POST /books
+- PATCH /books/<id>
+- DELETE /books/<id>
+
+Reviews:
+- GET /reviews
+- GET /reviews/<id>
+- POST /reviews
+- PATCH /reviews/<id>
+- DELETE /reviews/<id>
+
+Frontend Setup Steps
+--------------------
+
+Step 1:
+- npm create vite@latest frontend
+
+Step 2:
+- npm install
+
+Step 3:
+- npm install axios
+
+Step 4:
+- npm run dev
+
+Features
+--------
+- Full CRUD for books
+- Full CRUD for reviews
+- One-to-many relationship
+- REST API
+- PostgreSQL integration
+- React frontend integration
+
+Developers
+----------
+- Robert Maina
+- Joseph Ndemo
+- Mark Warunge
+- Abdirahman Abdi Salah
+- Gregory Kipchumba
+- Rotich Ian
+
+Copyright
+---------
+This project is developed for educational purposes only.
+It is intended for learning and academic submission use.
+No commercial use is permitted.
