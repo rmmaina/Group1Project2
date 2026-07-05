@@ -1,105 +1,43 @@
-import React from 'react';
-import { BookOpen, BookmarkCheck, Heart, Library, Star } from 'lucide-react';
-import icon1 from '../assets/icon1.png';
+import React from "react";
 
 export default function Navbar({ currentView, onViewChange }) {
   return (
     <nav className="navbar">
-      <div className="navbar-brand">
-        <img
-          src={icon1}
-          alt="Open Library Hub Logo"
-          className="nav-logo"
-        />
-        <span>OpenLibrary Hub</span>
-      </div>
+      <button
+        className={currentView === "home" ? "active" : ""}
+        onClick={() => onViewChange("home")}
+      >
+        Home
+      </button>
 
-      <ul className="navbar-links">
-        <li>
-          <a
-            href="#home"
-            className={currentView === 'home' ? 'active' : ''}
-            onClick={(e) => {
-              e.preventDefault();
-              onViewChange('home');
-            }}
-          >
-            <Library
-              size={16}
-              style={{ marginRight: '4px', verticalAlign: 'text-bottom' }}
-            />
-            Home
-          </a>
-        </li>
+      <button
+        className={currentView === "bookshelf" ? "active" : ""}
+        onClick={() => onViewChange("bookshelf")}
+      >
+        Bookshelf
+      </button>
 
-        <li>
-          <a
-            href="#manage-books"
-            className={currentView === 'manageBooks' ? 'active' : ''}
-            onClick={(e) => {
-              e.preventDefault();
-              onViewChange('manageBooks');
-            }}
-          >
-            <BookOpen
-              size={16}
-              style={{ marginRight: '4px', verticalAlign: 'text-bottom' }}
-            />
-            Manage Books
-          </a>
-        </li>
+      <button
+        className={currentView === "favorites" ? "active" : ""}
+        onClick={() => onViewChange("favorites")}
+      >
+        Favorites
+      </button>
 
-        <li>
-          <a
-            href="#bookshelf"
-            className={currentView === 'bookshelf' ? 'active' : ''}
-            onClick={(e) => {
-              e.preventDefault();
-              onViewChange('bookshelf');
-            }}
-          >
-            <BookmarkCheck
-              size={16}
-              style={{ marginRight: '4px', verticalAlign: 'text-bottom' }}
-            />
-            My Bookshelf
-          </a>
-        </li>
+      <button
+        className={currentView === "bookClub" ? "active" : ""}
+        onClick={() => onViewChange("bookClub")}
+      >
+        Book Club
+      </button>
 
-        <li>
-          <a
-            href="#book-club"
-            className={currentView === 'bookClub' ? 'active' : ''}
-            onClick={(e) => {
-              e.preventDefault();
-              onViewChange('bookClub');
-            }}
-          >
-            <Star
-              size={16}
-              style={{ marginRight: '4px', verticalAlign: 'text-bottom' }}
-            />
-            Book Club
-          </a>
-        </li>
-
-        <li>
-          <a
-            href="#favorites"
-            className={currentView === 'favorites' ? 'active' : ''}
-            onClick={(e) => {
-              e.preventDefault();
-              onViewChange('favorites');
-            }}
-          >
-            <Heart
-              size={16}
-              style={{ marginRight: '4px', verticalAlign: 'text-bottom' }}
-            />
-            Favorites
-          </a>
-        </li>
-      </ul>
+      {/* ✅ THIS IS THE IMPORTANT FIX */}
+      <button
+        className={currentView === "manageBooks" ? "active" : ""}
+        onClick={() => onViewChange("manageBooks")}
+      >
+        Manage Books
+      </button>
     </nav>
   );
 }
