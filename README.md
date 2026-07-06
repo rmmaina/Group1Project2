@@ -1,50 +1,51 @@
-# Open Library Book System – Full Stack Web Application
+# 📚 OpenLibrary Hub
+
+A full-stack book management application built with **React (Vite)**, **Flask**, and **PostgreSQL**.
+
+Users can search thousands of books from the Open Library API, organize their personal library, save favorites, manage books, and rate books through an interactive Book Club feature.
 
 ---
 
-## Project Overview
-
-This is a full-stack web application built using Flask, React, and PostgreSQL.
-
-It allows users to manage books and reviews and provides full CRUD functionality through a REST API.
-
----
-
-## Project Objective
-
-The system was designed to:
-
-- Add books to a collection
-- View all books
-- Add reviews and ratings for books
-- Update books and reviews
-- Delete books and reviews
-
----
-
-## Problem Statement
-
-People read books but lack a simple way to store and manage reviews.
-
-This system provides a structured way to manage books and reviews, with data stored in PostgreSQL and accessed via a REST API.
-
----
-
-## Live Demo
+# Live Demo
 
 https://openlibrary20.vercel.app/
 
 ---
 
-## GitHub Repository
+# GitHub Repository
 
 https://github.com/rmmaina/Group1Project2
 
 ---
 
-## Technologies Used
+# Features
 
-### Backend
+- Search books using the Open Library API
+- View book details
+- Add and remove books from your personal Bookshelf
+- Save favorite books
+- Rate books in the Book Club
+- Add new books
+- Edit existing books
+- Delete books
+- PostgreSQL database integration
+- RESTful Flask API
+- Responsive interface
+
+---
+
+# Technologies Used
+
+## Frontend
+
+- React (Vite)
+- JavaScript (ES6)
+- CSS3
+- Fetch API
+- Lucide React Icons
+
+## Backend
+
 - Python
 - Flask
 - Flask SQLAlchemy
@@ -52,136 +53,254 @@ https://github.com/rmmaina/Group1Project2
 - Flask CORS
 - PostgreSQL
 
-### Frontend
-- React (Vite)
-- Axios / Fetch API
-
 ---
 
-## Project Structure
+# Project Structure
 
-```text id="structure1"
-server/
-├── app.py
-├── config.py
-├── seed.py
+```
+Group1Project2/
 │
-├── models/
-│   ├── book.py
-│   └── review.py
+├── client/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── features/
+│   │   │   └── books/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── package.json
+│   └── vite.config.js
 │
-└── routes/
-    ├── book_routes.py
-    └── review_routes.py
-
-## Features
-
-- Full CRUD for books
-- Full CRUD for reviews
-- One-to-many relationship between books and reviews
-- REST API architecture
-- PostgreSQL database integration
-- React frontend integration
-
----
-
-## API Endpoints
-
-### Books
-
-- GET /books
-- GET /books/<id>
-- POST /books
-- PATCH /books/<id>
-- DELETE /books/<id>
-
-### Reviews
-
-- GET /reviews
-- GET /reviews/<id>
-- POST /reviews
-- PATCH /reviews/<id>
-- DELETE /reviews/<id>
+├── server/
+│   ├── app.py
+│   ├── config.py
+│   ├── models.py
+│   ├── routes/
+│   ├── seed.py
+│   ├── migrations/
+│   ├── requirements.txt
+│   └── venv/
+│
+├── images/
+│
+├── README.md
+└── PROJECT_PITCH.md
+```
 
 ---
 
-## Backend Setup
+# Screenshots
 
-### 1. Create project folder
+Add your screenshots inside the **images** folder.
+
+Example:
+
+```
+images/
+├── home.png
+├── manage-books.png
+├── bookshelf.png
+├── favorites.png
+└── bookclub.png
+```
+
+Then display them like this:
+
+## Home
+
+![Home](images/home.png)
+
+## Manage Books
+
+![Manage Books](images/manage-books.png)
+
+## Bookshelf
+
+![Bookshelf](images/bookshelf.png)
+
+## Favorites
+
+![Favorites](images/favorites.png)
+
+## Book Club
+
+![Book Club](images/bookclub.png)
+
+---
+
+# Backend Setup
+
+## 1. Navigate to the server
 
 ```bash
-mkdir server
 cd server
+```
 
-2. Create virtual environment
+## 2. Create a virtual environment
+
+```bash
 python -m venv venv
+```
+
+## 3. Activate the virtual environment
+
+### Windows
+
+```bash
 venv\Scripts\activate
+```
 
-3. Install dependencies
-pip install flask flask-sqlalchemy flask-migrate flask-cors psycopg2
+### Mac/Linux
 
-4. Configure database
-Set PostgreSQL URI in config.py
+```bash
+source venv/bin/activate
+```
 
-5. Run migrations
-flask db init
-flask db migrate
+## 4. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## 5. Configure PostgreSQL
+
+Update the database URI in **app.py** or use environment variables.
+
+Example:
+
+```python
+postgresql://username:password@localhost/library_db
+```
+
+## 6. Run migrations
+
+```bash
 flask db upgrade
+```
 
-6. Seed database
+## 7. Seed the database (optional)
+
+```bash
 python seed.py
+```
 
-7. Run backend server
+## 8. Start the backend
+
+```bash
 python app.py
-Backend runs at:
+```
 
-http://localhost:5000
+Backend runs on:
 
-Frontend Setup
-1. Create React app
-npm create vite@latest frontend
+```
+http://127.0.0.1:5000
+```
 
-2. Install dependencies
-cd frontend
+---
+
+# Frontend Setup
+
+Navigate to the client folder.
+
+```bash
+cd client
+```
+
+Install dependencies.
+
+```bash
 npm install
-npm install axios
+```
 
-3. Run frontend server
+Start the development server.
+
+```bash
 npm run dev
+```
 
-Frontend runs at:
+Frontend runs on:
 
+```
 http://localhost:5173
+```
 
-Frontend Integration
-API service file: src/services/api.js
-Backend URL: http://localhost:5000
-Components:
-BookList
-BookForm
-ReviewList
-Axios used for API communication
+---
 
-How to Update Backend
-1. Stop server
-CTRL + C
+# API Endpoints
 
-2. Run migrations
-flask db migrate -m "update changes"
-flask db upgrade
+## Books
 
-3. Restart server
-python app.py
+```
+GET     /books
+GET     /books/<id>
+POST    /books
+PUT     /books/<id>
+DELETE  /books/<id>
+```
 
-Developers
-1.Robert Maina
-2.Joseph Ndemo
-3.Mark Warunge
-4.Abdirahman Abdi Salah
-5.Gregory Kipchumba
-6.Rotich Ian
+## Reviews
 
-License
-This project is developed for educational purposes only.
-It is intended for academic learning and submission.
-No commercial use is permitted.
+```
+GET     /reviews
+GET     /reviews/<id>
+POST    /reviews
+PUT     /reviews/<id>
+DELETE  /reviews/<id>
+```
+
+---
+
+# Deployment
+
+## Frontend
+
+Deploy using **Vercel**.
+
+## Backend
+
+Deploy using **Render**.
+
+After deploying the backend, replace:
+
+```javascript
+http://127.0.0.1:5000/books
+```
+
+with
+
+```javascript
+https://your-render-app.onrender.com/books
+```
+
+inside **ManageBooks.jsx**.
+
+---
+
+# Future Improvements
+
+- User authentication
+- User accounts
+- Reading progress tracker
+- Dark mode
+- Advanced search filters
+- Book recommendations
+
+---
+
+# Developers
+
+- Robert Maina
+- Joseph Ndemo
+- Mark Warunge
+- Abdirahman Abdi Salah
+- Gregory Kipchumba
+- Rotich Ian
+
+---
+
+# License
+
+This project was developed for educational purposes only.
+
+It is intended for learning and academic submission.
+
+No commercial use is intended.
