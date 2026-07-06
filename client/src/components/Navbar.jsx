@@ -31,7 +31,7 @@ export default function Navbar({ currentView, onViewChange }) {
           className={currentView === "bookshelf" ? "active" : ""}
           onClick={() => onViewChange("bookshelf")}
         >
-          My Bookshelf
+          Bookshelf
         </button>
 
         <button
