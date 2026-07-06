@@ -32,13 +32,13 @@ This system provides a structured way to manage books and reviews, with data sto
 
 ## Live Demo
 
-https://openlibrary-one.vercel.app/
+https://openlibrary20.vercel.app/
 
 ---
 
 ## GitHub Repository
 
-https://github.com/rmmaina/Group1Project1_submission
+https://github.com/rmmaina/Group1Project2
 
 ---
 
